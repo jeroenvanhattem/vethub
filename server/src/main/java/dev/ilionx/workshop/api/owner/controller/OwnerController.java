@@ -5,6 +5,7 @@ import dev.ilionx.workshop.api.owner.model.mapper.OwnerMapper;
 import dev.ilionx.workshop.api.owner.model.request.CreateOwnerRequest;
 import dev.ilionx.workshop.api.owner.model.request.UpdateOwnerRequest;
 import dev.ilionx.workshop.api.owner.model.response.OwnerResponse;
+import dev.ilionx.workshop.api.owner.model.validator.OwnerValidator;
 import dev.ilionx.workshop.api.owner.service.OwnerService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -35,6 +36,7 @@ public class OwnerController {
 
     private final OwnerService ownerService;
     private final OwnerMapper ownerMapper;
+    private final OwnerValidator ownerValidator;
 
     @ResponseStatus(OK)
     @Operation(
@@ -75,6 +77,7 @@ public class OwnerController {
         produces = APPLICATION_JSON_VALUE
     )
     public ResponseEntity<OwnerResponse> createOwner(@RequestBody final CreateOwnerRequest request) {
+        ownerValidator.validateAndThrow(request);
         final Owner owner = ownerService.create(request);
         return ResponseEntity.status(CREATED).body(ownerMapper.toResponse(owner));
     }
@@ -90,6 +93,7 @@ public class OwnerController {
         produces = APPLICATION_JSON_VALUE
     )
     public ResponseEntity<OwnerResponse> updateOwner(@PathVariable final Integer id, @RequestBody final UpdateOwnerRequest request) {
+        ownerValidator.validateAndThrow(request);
         final Owner owner = ownerService.update(id, request);
         return ResponseEntity.status(OK).body(ownerMapper.toResponse(owner));
     }
