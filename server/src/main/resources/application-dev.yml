@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    drop-first: true
+    contexts: tst
+  security:
+    user:
+      name: user
+      password: password
