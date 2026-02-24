@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /**
  * Request DTO for creating a new pet.
@@ -16,6 +19,7 @@ import java.time.LocalDate;
 @Schema(description = "Request to create a new pet")
 public class CreatePetRequest {
 
+    @NotBlank(message = "Name cannot be blank")
     @Schema(
         description = "Pet's name",
         example = "Leo",
@@ -23,6 +27,8 @@ public class CreatePetRequest {
     )
     private String name;
 
+    @NotNull(message = "Birth date cannot be null")
+    @Past(message = "Birth date must be in the past")
     @Schema(
         description = "Pet's date of birth",
         example = "2020-09-07",
@@ -30,6 +36,7 @@ public class CreatePetRequest {
     )
     private LocalDate birthDate;
 
+    @NotNull(message = "Type ID cannot be null")
     @Schema(
         description = "ID of the pet type",
         example = "1",

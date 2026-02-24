@@ -1,0 +1,15 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd"
+                   logicalFilePath="202602240002-PRD-add-owner-email-field.xml">
+
+    <changeSet id="202602240002-PRD-add-owner-email-field" author="opencode">
+        <comment>Adding email field to owners table.</comment>
+        <sql>
+            ALTER TABLE owners ADD COLUMN IF NOT EXISTS email VARCHAR(255);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

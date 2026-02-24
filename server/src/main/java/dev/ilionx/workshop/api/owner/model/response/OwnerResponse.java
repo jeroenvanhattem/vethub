@@ -60,6 +60,13 @@ public class OwnerResponse {
     )
     private String telephone;
 
+    @Schema(
+        description = "The owner's email address",
+        example = "george.franklin@example.com",
+        requiredMode = Schema.RequiredMode.REQUIRED
+    )
+    private String email;
+
     @Schema(description = "The owner's pets")
     private List<PetSummaryResponse> pets;
 }

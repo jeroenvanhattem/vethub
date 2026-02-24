@@ -73,6 +73,7 @@ public class OwnerService {
         owner.setAddress(request.getAddress());
         owner.setCity(request.getCity());
         owner.setTelephone(request.getTelephone());
+        owner.setEmail(request.getEmail());
         return ownerRepository.save(owner);
     }
 
@@ -91,6 +92,7 @@ public class OwnerService {
         owner.setAddress(request.getAddress());
         owner.setCity(request.getCity());
         owner.setTelephone(request.getTelephone());
+        owner.setEmail(request.getEmail());
         return ownerRepository.save(owner);
     }
 

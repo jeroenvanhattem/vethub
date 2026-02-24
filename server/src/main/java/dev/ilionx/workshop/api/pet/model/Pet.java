@@ -20,6 +20,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Past;
 
 /**
  * Entity representing a pet.
@@ -35,14 +37,15 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Name cannot be blank")
     @Column(
         name = "name",
         nullable = false
     )
     private String name;
 
-    // BUG: No @Past validation - future birth dates are allowed
-    // Students should add @Past
+    // FIXED: Added @Past validation
+    @Past(message = "Birth date must be in the past")
     @Column(
         name = "birth_date",
         nullable = false

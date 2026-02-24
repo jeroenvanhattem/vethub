@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Request DTO for creating a new visit.
@@ -16,6 +18,7 @@ import java.time.LocalDate;
 @Schema(description = "Request to create a new visit")
 public class CreateVisitRequest {
 
+    @NotNull(message = "Date cannot be null")
     @Schema(
         description = "Date of the visit",
         example = "2023-01-01",
@@ -23,6 +26,7 @@ public class CreateVisitRequest {
     )
     private LocalDate date;
 
+    @NotBlank(message = "Description cannot be blank")
     @Schema(
         description = "Description of the visit",
         example = "Rabies shot",

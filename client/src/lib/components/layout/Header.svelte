@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { Users, Stethoscope, Calendar, Home, Menu, X } from 'lucide-svelte';
+	import { Users, Stethoscope, Calendar, Home, Menu, X, PawPrint } from 'lucide-svelte';
 	import { Button } from '$lib/components/ui/button';
 
 	let mobileMenuOpen = $state(false);
@@ -8,8 +8,10 @@
 	const navItems = [
 		{ href: '/', label: 'Home', icon: Home },
 		{ href: '/owners', label: 'Owners', icon: Users },
+		{ href: '/pets', label: 'Pets', icon: PawPrint },
 		{ href: '/vets', label: 'Veterinarians', icon: Stethoscope },
-		{ href: '/visits', label: 'Visits', icon: Calendar }
+		{ href: '/visits', label: 'Visits', icon: Calendar },
+		{ href: '/appointments', label: 'Appointments', icon: Calendar }
 	];
 
 	function isActive(href: string): boolean {

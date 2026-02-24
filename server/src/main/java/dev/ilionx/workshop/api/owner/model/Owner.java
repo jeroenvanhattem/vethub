@@ -16,6 +16,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * Entity representing a pet owner.
@@ -31,16 +33,16 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    // BUG: No @NotBlank validation - empty first names are allowed
-    // Students should add @NotBlank
+    // FIXED: Added @NotBlank validation
+    @NotBlank(message = "First name cannot be blank")
     @Column(
         name = "first_name",
         nullable = false
     )
     private String firstName;
 
-    // BUG: No @NotBlank validation - empty last names are allowed
-    // Students should add @NotBlank
+    // FIXED: Added @NotBlank validation
+    @NotBlank(message = "Last name cannot be blank")
     @Column(
         name = "last_name",
         nullable = false
@@ -55,6 +57,10 @@ public class Owner {
 
     @Column(name = "telephone")
     private String telephone;
+
+    @Email(message = "Email must be valid")
+    @Column(name = "email")
+    private String email;
 
     @OneToMany(
         mappedBy = "owner",

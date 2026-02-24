@@ -68,6 +68,14 @@ public final class Paths {
     public static final String SPECIALTIES = BASE_PATH + "/specialties";
     public static final String SPECIALTY_BY_ID = SPECIALTIES + ID_PART;
 
+    // Owner > Pet > Vaccination (nested)
+    public static final String PET_VACCINATIONS = OWNER_PET_BY_ID + "/vaccinations";
+    public static final String PET_VACCINATION_BY_ID = PET_VACCINATIONS + "/{vaccinationId}";
+
+    // Appointment
+    public static final String APPOINTMENTS = BASE_PATH + "/appointments";
+    public static final String APPOINTMENT_BY_ID = APPOINTMENTS + "/{appointmentId}";
+
     /* ------------------------------- END ------------------------------- */
 
     private Paths() {

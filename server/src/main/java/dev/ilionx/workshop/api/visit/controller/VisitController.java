@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -69,6 +70,7 @@ public class VisitController {
     public ResponseEntity<VisitResponse> createVisit(
         @PathVariable final Integer ownerId,
         @PathVariable final Integer petId,
+        @Valid
         @RequestBody final CreateVisitRequest request
     ) {
         petService.findByIdAndOwnerId(petId, ownerId);
@@ -109,6 +111,7 @@ public class VisitController {
         @PathVariable final Integer ownerId,
         @PathVariable final Integer petId,
         @PathVariable final Integer visitId,
+        @Valid
         @RequestBody final UpdateVisitRequest request
     ) {
         petService.findByIdAndOwnerId(petId, ownerId);

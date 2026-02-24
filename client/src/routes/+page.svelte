@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Stethoscope, Users, Calendar, PawPrint } from 'lucide-svelte';
+	import { Stethoscope, Users, Calendar, PawPrint, ClipboardList } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -31,7 +31,7 @@
 	</section>
 
 	<!-- Quick Links Grid -->
-	<section class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+	<section class="grid gap-6 md:grid-cols-2 lg:grid-cols-5">
 		<a
 			href="/owners"
 			class="card-hover p-6 flex flex-col items-center text-center animate-fade-in-up stagger-1"
@@ -72,15 +72,28 @@
 		</a>
 
 		<a
-			href="/visits"
+			href="/appointments"
 			class="card-hover p-6 flex flex-col items-center text-center animate-fade-in-up stagger-4"
 		>
 			<div class="flex h-14 w-14 items-center justify-center rounded-full bg-warning/10 mb-4">
 				<Calendar class="h-7 w-7 text-warning" />
 			</div>
-			<h2 class="font-medium text-foreground mb-2">Visits</h2>
+			<h2 class="font-medium text-foreground mb-2">Appointments</h2>
 			<p class="text-sm font-light text-muted-foreground">
 				Schedule and manage veterinary appointments
+			</p>
+		</a>
+
+		<a
+			href="/visits"
+			class="card-hover p-6 flex flex-col items-center text-center animate-fade-in-up stagger-5"
+		>
+			<div class="flex h-14 w-14 items-center justify-center rounded-full bg-blue-500/10 mb-4">
+				<ClipboardList class="h-7 w-7 text-blue-500" />
+			</div>
+			<h2 class="font-medium text-foreground mb-2">Visits</h2>
+			<p class="text-sm font-light text-muted-foreground">
+				Track and manage completed veterinary visits
 			</p>
 		</a>
 	</section>

@@ -49,4 +49,11 @@ public class UpdateOwnerRequest {
     )
     private String telephone;
 
+    @Schema(
+        description = "Owner's email address",
+        example = "betty.davis@example.com",
+        requiredMode = Schema.RequiredMode.NOT_REQUIRED
+    )
+    private String email;
+
 }

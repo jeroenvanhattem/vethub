@@ -1,4 +1,4 @@
-package dev.ilionx.workshop.api.visit.model;
+package dev.ilionx.workshop.api.vaccination.model;
 
 import dev.ilionx.workshop.api.pet.model.Pet;
 import lombok.Getter;
@@ -15,31 +15,40 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 /**
- * Entity representing a veterinary visit for a pet.
+ * Entity representing a vaccination record for a pet.
  */
 @Entity
-@Table(name = "visits")
+@Table(name = "vaccinations")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Visit {
+public class Vaccination {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Vaccine name cannot be blank")
     @Column(
-        name = "date",
+        name = "vaccine_name",
         nullable = false
     )
-    private LocalDate date;
+    private String vaccineName;
 
-    // FIXED: Added @NotBlank validation
-    @NotBlank(message = "Description cannot be blank")
-    @Column(name = "description")
-    private String description;
+    @NotNull(message = "Vaccination date cannot be null")
+    @Past(message = "Vaccination date must be in the past")
+    @Column(
+        name = "vaccination_date",
+        nullable = false
+    )
+    private LocalDate vaccinationDate;
+
+    @Column(name = "next_due_date")
+    private LocalDate nextDueDate;
 
     @ManyToOne
     @JoinColumn(
