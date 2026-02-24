@@ -48,7 +48,7 @@ public class WebSecurityConfig {
             accessManagement.requestMatchers(PUBLIC_ACTUATOR_PATH + WILDCARD_PART).permitAll();
             accessManagement.requestMatchers(PUBLIC_PATH + WILDCARD_PART).permitAll();
             accessManagement.requestMatchers(OPENAPI_PATH + WILDCARD_PART).permitAll();
-            accessManagement.anyRequest().authenticated();
+            accessManagement.anyRequest().permitAll();
         });
 
         return http.build();
